@@ -43,7 +43,7 @@ def create_model_and_train(X_train, Y_train, X_test):
 
     classifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-    classifier.fit(X_train, Y_train, batch_size=10, nb_epoch=100)
+    classifier.fit(X_train, Y_train, batch_size=2, nb_epoch=100)
 
     # getting predictions of test data
     prediction = classifier.predict(X_test).tolist()

@@ -37,6 +37,8 @@ def create_model_and_train(X_train, Y_train, X_test):
     # Input layer with 5 inputs neurons
     classifier.add(Dense(output_dim=4, init='uniform', activation='relu', input_dim=6))
     # Hidden layer
+    classifier.add(Dense(output_dim=5, init='uniform', activation='relu'))
+    # Hidden layer
     classifier.add(Dense(output_dim=2, init='uniform', activation='relu'))
     # output layer with 1 output neuron which will predict 1 or 0
     classifier.add(Dense(output_dim=1, init='uniform', activation='sigmoid'))
@@ -49,3 +51,5 @@ def create_model_and_train(X_train, Y_train, X_test):
     prediction = classifier.predict(X_test).tolist()
     # list to series
     se = pd.Series(prediction)
+
+    return se

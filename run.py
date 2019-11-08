@@ -15,6 +15,19 @@ if __name__ == "__main__":
 
     #train_data_X = labelEncoder(train_data_X, 6)
 
-    create_model_and_train(train_data_X, data.train_data_Y, test_data_X)
+    se = create_model_and_train(train_data_X, data.train_data_Y, test_data_X)
+
+    data.submission['check'] = se
+
+    series = []
+    for val in data.submission.check:
+        if val[0] >= 0.5:
+            series.append(1)
+        else:
+            series.append(0)
+    data.submission['final'] = series
+    final_data = data.submission.drop(['Survived', 'check'], axis=1)
+    final_data = final_data.rename(columns={"final": "Survived"})
+    final_data.to_csv("/Users/nicolaepetridean/jde/projects/titanic/try/data/submission.csv", index = None, header=True)
 
 

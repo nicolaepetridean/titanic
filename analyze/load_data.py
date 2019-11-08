@@ -11,6 +11,7 @@ class TitanicDataLoad:
         self.test_data={}
         self.test_header_columns=[]
         self.train_data={}
+        self.submission = {}
         self.train_header_columns = []
         self.train_header_columns_X = []
         self.test_header_columns_X = []
@@ -22,6 +23,7 @@ class TitanicDataLoad:
     def loadFile(self, path):
         self.test_data = pd.read_csv(os.path.join(path, 'test.csv'), delimiter=',')
         self.train_data = pd.read_csv(os.path.join(path, 'train.csv'), delimiter=',')
+        self.submission = pd.read_csv(os.path.join(path, 'gender_submission.csv'), delimiter=',')
 
         self.test_header_columns = [i for i in self.test_data.columns]
         self.train_header_columns = [i for i in self.train_data.columns]

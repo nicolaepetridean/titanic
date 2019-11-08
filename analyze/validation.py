@@ -4,6 +4,7 @@ from model.first_model import create_model_and_train
 from model.first_model import labelEncoder
 from sklearn.utils import shuffle
 import numpy as np
+from sklearn import metrics
 
 
 def validate_model():
@@ -32,7 +33,7 @@ def validate_model():
 
     prediction_mistakes = [concat_with_x[i] for i, row in enumerate(concat_with_x) if concat_with_x[i][6] != concat_with_x[i][7]]
 
-    print(prediction_mistakes.shape)
+    print(metrics.accuracy_score(compare[:, 1].astype(int), compare[:, 0].astype(int)))
 
 
 if __name__ == "__main__":

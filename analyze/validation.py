@@ -13,6 +13,10 @@ def validate_model():
 
     train_data_X = labelEncoder(data.train_data_X, 1)
 
+    train_data_X = np.hstack((train_data_X, train_data_X[:, 3].reshape(891, 1) + train_data_X[:, 4].reshape(891, 1)))
+    train_data_X = np.delete(train_data_X, 3, 1)
+    train_data_X = np.delete(train_data_X, 3, 1)
+
     X, y = shuffle(train_data_X, data.train_data_Y, random_state=0)
 
     X_train = X[:-150, :]
@@ -31,7 +35,7 @@ def validate_model():
 
     concat_with_x = np.concatenate((X_dev, compare), axis=1)
 
-    prediction_mistakes = [concat_with_x[i] for i, row in enumerate(concat_with_x) if concat_with_x[i][6] != concat_with_x[i][7]]
+    prediction_mistakes = [concat_with_x[i] for i, row in enumerate(concat_with_x) if concat_with_x[i][4] != concat_with_x[i][5]]
 
     print(metrics.accuracy_score(compare[:, 1].astype(int), compare[:, 0].astype(int)))
 

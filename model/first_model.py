@@ -35,7 +35,7 @@ def create_model_and_train(X_train, Y_train, X_test):
 
     classifier = Sequential()
     # Input layer with 5 inputs neurons
-    classifier.add(Dense(output_dim=6, init='uniform', activation='relu', input_dim=6))
+    classifier.add(Dense(output_dim=5, init='uniform', activation='relu', input_dim=5))
     # Hidden layer
     classifier.add(Dense(output_dim=5, init='uniform', activation='relu'))
     # output layer with 1 output neuron which will predict 1 or 0
@@ -43,7 +43,7 @@ def create_model_and_train(X_train, Y_train, X_test):
 
     classifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-    classifier.fit(X_train, Y_train, batch_size=2, nb_epoch=100)
+    classifier.fit(X_train, Y_train, batch_size=5, nb_epoch=150)
 
     # getting predictions of test data
     prediction = classifier.predict(X_test).tolist()

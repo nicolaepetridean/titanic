@@ -1,6 +1,6 @@
 numpy
 keras
-tensorflow==1.14
+tensorflow==2.6.4
 pandas
 sklearn
 matplotlib
